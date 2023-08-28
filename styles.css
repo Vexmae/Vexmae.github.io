@@ -1,0 +1,143 @@
+:root {
+    --rosewater: #f5e0dc;
+    --flamingo: #eba8a8;
+    --pink: #f585d7;
+    --mauve: #9f72d6;
+    --red: #f36c6c;
+    --maroon: #eba0ac;
+    --peach: #fa9d63;
+    --yellow: #eece89;
+    --green: #8dd386;
+    --teal: #7ae6d4;
+    --sky: #65d8ec;
+    --sapphire: #74c7ec;
+    --blue: #89b4fa;
+    --lavender: #b4befe;
+    --text: #c7c7c7; /* Closest gray: #c7c7c7 */
+    --subtext1: #bebebe; /* Closest gray: #bebebe */
+    --subtext0: #a9a9a9; /* Closest gray: #a9a9a9 */
+    --overlay2: #969696; /* Closest gray: #969696 */
+    --overlay1: #828282; /* Closest gray: #828282 */
+    --overlay0: #707070; /* Closest gray: #707070 */
+    --surface2: #5a5a5a; /* Closest gray: #5a5a5a */
+    --surface1: #484848; /* Closest gray: #484848 */
+    --surface0: #333333; /* Closest gray: #333333 */
+    --base: #1e1e1e;
+    --mantle: #181818;
+    --crust: #111111;
+
+}
+
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom right, #575143, #3b372c);
+    background-attachment: fixed; /* Keep the background fixed relative to the viewport */
+    background-size: cover; /* Cover the entire viewport */
+}
+
+.navbar {
+    background-color: var(--mantle);
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding-left: 15px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: bold;
+    font-size: 100%;
+    font-family: 'Montserrat', sans-serif;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    position: relative;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.navbar a::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: var(--yellow);
+    transform: scaleY(0);
+    transform-origin: center bottom;
+    transition: transform 0.3s ease-in-out, height 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+    background-color: var(--crust);
+}
+
+.navbar a:hover::before {
+    transform: scaleY(1);
+    height: 4px;
+}
+
+.content {
+    padding-top: 80px;
+    display: flex;
+    justify-content: center;
+    background-color: var(--base);
+    margin: 0 15%; /* 15% margin on the left and right */
+    border-left: 2.5px solid var(--yellow); /* Left border */
+    border-right: 2.5px solid var(--yellow); /* Right border */
+}
+
+.main-content {
+    padding: 20px;
+    max-width: 800px;
+    text-align: center;
+    color: var(--text);
+}
+
+/* Box at the bottom */
+.footer-box {
+    background-color: var(--mantle);
+    color: var(--text);
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.github-icon {
+    margin-right: 10px;
+    position: relative;
+}
+
+.discord-icon {
+    margin-left: auto;
+    margin-right: 0px;
+	position: relative;
+	transform: translateY(4px); /* Adjust this value to offset the SVG vertically */
+}
+
+.discord-tooltip {
+    position: absolute;
+    bottom: -30px; /* Adjust the distance of the tooltip from the icon */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, visibility 0.2s;
+}
+
+.discord-icon:hover .discord-tooltip {
+    visibility: visible;
+    opacity: 1;
+}
