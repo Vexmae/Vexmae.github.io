@@ -1,2 +1,2 @@
-# Vexmae.github.io
-Personal site showing of my projects
+# vexmae.github.io
+HelloWorld
