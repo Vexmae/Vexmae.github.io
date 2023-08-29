@@ -1,0 +1,16 @@
+.content {
+    padding-top: 80px;
+    display: flex;
+    justify-content: center;
+    background-color: var(--base);
+    margin: 0 15%; /* 15% margin on the left and right */
+    border-left: 2.5px solid var(--yellow); /* Left border */
+    border-right: 2.5px solid var(--yellow); /* Right border */
+}
+
+.main-content {
+    padding: 20px;
+    max-width: 800px;
+    text-align: center;
+    color: var(--text);
+}

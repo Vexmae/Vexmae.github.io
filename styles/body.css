@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom right, #575143, #3b372c);
+    background-attachment: fixed; /* Keep the background fixed relative to the viewport */
+    background-size: cover; /* Cover the entire viewport */
+}
+
+
+
+@media (max-width: 260px) {
+    body {
+        min-width: 260px; /* Set a minimum width for the body */
+    }
+}
+
+/* Webkit-based browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 12px; /* Set the width of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--base); /* Set the color of the scrollbar thumb */
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--crust); /* Set the color of the scrollbar track */
+}

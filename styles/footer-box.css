@@ -1,0 +1,13 @@
+/* Box at the bottom */
+.footer-box {
+    background-color: var(--mantle);
+    color: var(--text);
+    padding-left: 0px;
+	padding-right: 0px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
