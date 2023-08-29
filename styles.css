@@ -41,6 +41,8 @@ body {
 .navbar {
     background-color: var(--mantle);
     display: flex;
+	position: fixed;
+	width: 100%;
     align-items: center;
     height: 60px;
 }
@@ -86,6 +88,19 @@ body {
     body {
         min-width: 260px; /* Set a minimum width for the body */
     }
+}
+
+/* Webkit-based browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 12px; /* Set the width of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--base); /* Set the color of the scrollbar thumb */
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--crust); /* Set the color of the scrollbar track */
 }
 
 .navbar a {
@@ -143,9 +158,12 @@ body {
 .footer-box {
     background-color: var(--mantle);
     color: var(--text);
-    padding: 10px;
+    padding-left: 0px;
+	padding-right: 0px;
+	padding-bottom: 10px;
+	padding-top: 10px;
     text-align: center;
-    position: fixed;
+    position: relative;
     bottom: 0;
     width: 100%;
 }
@@ -164,7 +182,7 @@ body {
 
 .discord-tooltip {
     position: absolute;
-    bottom: -40px; /* Adjust the distance of the tooltip from the icon */
+    bottom: -30px; /* Adjust the distance of the tooltip from the icon */
     left: 50%;
     transform: translateX(-50%);
     background-color: rgba(0, 0, 0, 0.8);
