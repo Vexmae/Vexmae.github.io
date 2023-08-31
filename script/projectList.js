@@ -1,10 +1,10 @@
-fetch('content/project/')
+fetch('./content/project/')
     .then(response => response.text())
     .then(data => {
         const parser = new DOMParser();
         const doc = parser.parseFromString(data, 'text/html');
 
-        const projectLinks = doc.querySelectorAll('a'); // Assuming links point to projects
+        const projectLinks = doc.querySelectorAll('a');
         const projects = Array.from(projectLinks).map(link => link.textContent.trim()).filter(project => project !== "http-server").filter(project => project !== "../");
 
         const mainContent = document.querySelector('.main-content');
@@ -24,7 +24,7 @@ fetch('content/project/')
 
 		const main = document.createElement('a');
 		main.className = 'project-redirect';
-		main.href = '../content/project/' + projectName + 'projectPage.html';
+		main.href = './content/project/' + projectName + 'projectPage.html';
 
 		const projectBox = document.createElement('div');
 		projectBox.className = 'project-box';
@@ -36,7 +36,7 @@ fetch('content/project/')
 		const imagecont1 = document.createElement('div');
 		imagecont1.className = 'project-image';
 		const image1 = document.createElement("img");
-		image1.src = '../content/project/' + projectName + 'preview1.jpg';
+		image1.src = './content/project/' + projectName + 'preview1.jpg';
 		image1.alt = "Project Image 1";
 		imagecont1.appendChild(image1);
 
@@ -44,15 +44,14 @@ fetch('content/project/')
 		imagecont2.className = 'project-image';
 		
 		const image2 = document.createElement("img");
-		image2.src = '../content/project/' + projectName + 'preview2.jpg';
+		image2.src = './content/project/' + projectName + 'preview2.jpg';
 		image2.alt = "Project Image 2";
 		imagecont2.appendChild(image2);
 
 		const projectNameElement = document.createElement('div');
 		projectNameElement.className = 'project-name';
-		//projectNameElement.textContent = projectName.replace(/\/$/, '');
 
-		fetch('../content/project/' + projectName + '/title.txt')
+		fetch('./content/project/' + projectName + '/title.txt')
         .then(response => response.text())
         .then(title => {
             projectNameElement.textContent = title;
