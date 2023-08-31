@@ -1,11 +1,8 @@
-fetch('/content/project/')
+fetch('/content/project/project-index.txt')
     .then(response => response.text())
     .then(data => {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(data, 'text/html');
-
-        const projectLinks = doc.querySelectorAll('a');
-        const projects = Array.from(projectLinks).map(link => link.textContent.trim()).filter(project => project !== "http-server").filter(project => project !== "../");
+        // Split the data into an array of project names
+        const projects = data.split('\n').filter(name => name.trim() !== '');
 
         const mainContent = document.querySelector('.main-content');
 
@@ -17,6 +14,7 @@ fetch('/content/project/')
     .catch(error => {
         console.error('Error fetching project list:', error);
     });
+	
 	
 
 
