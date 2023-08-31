@@ -1,4 +1,4 @@
-fetch('./content/project/')
+fetch('/content/project/')
     .then(response => response.text())
     .then(data => {
         const parser = new DOMParser();
@@ -24,7 +24,7 @@ fetch('./content/project/')
 
 		const main = document.createElement('a');
 		main.className = 'project-redirect';
-		main.href = './content/project/' + projectName + 'projectPage.html';
+		main.href = '/content/project/' + projectName + 'projectPage.html';
 
 		const projectBox = document.createElement('div');
 		projectBox.className = 'project-box';
