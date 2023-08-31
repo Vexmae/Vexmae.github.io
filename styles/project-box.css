@@ -1,7 +1,7 @@
 .project-box {
+	text-decoration: none;
     width: 95%;
     background-color: var(--surface1);
-    margin: 20px auto; /* Adjust margins as needed */
     padding: 10px;
     border: 1px solid var(--yellow);
     border-radius: 2px;
@@ -28,10 +28,15 @@
 }
 
 .project-name {
+	text-decoration: none;
     padding-top: 10px;
     text-align: left;
     font-weight: bold;
     font-size: 24px;
     color: var(--text);
 	font-family: 'Montserrat', sans-serif;
+}
+
+.project-redirect {
+	text-decoration: none;
 }

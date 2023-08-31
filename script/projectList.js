@@ -5,7 +5,7 @@ fetch('content/project/')
         const doc = parser.parseFromString(data, 'text/html');
 
         const projectLinks = doc.querySelectorAll('a'); // Assuming links point to projects
-        const projects = Array.from(projectLinks).map(link => link.textContent.trim());
+        const projects = Array.from(projectLinks).map(link => link.textContent.trim()).filter(project => project !== "http-server").filter(project => project !== "../");
 
         const mainContent = document.querySelector('.main-content');
 
@@ -18,38 +18,52 @@ fetch('content/project/')
         console.error('Error fetching project list:', error);
     });
 	
+
+
 	function createProjectBox(projectName) {
-    const projectBox = document.createElement('div');
-    projectBox.className = 'project-box';
-    projectBox.href = `projectPage.html?project=${encodeURIComponent(projectName)}`;
 
-    const imageContainer = document.createElement('div');
-    imageContainer.className = 'project-images';
+		const main = document.createElement('a');
+		main.className = 'project-redirect';
+		main.href = '../content/project/' + projectName + 'projectPage.html';
 
-    const imagecont1 = document.createElement('div');
-    imagecont1.className = 'project-image';
-    const image1 = document.createElement("img");
-	image1.src = '../content/project/' + projectName + 'preview1.jpg';
-	image1.alt = "Project Image 1";
-	imagecont1.appendChild(image1);
+		const projectBox = document.createElement('div');
+		projectBox.className = 'project-box';
+		
 
-    const imagecont2 = document.createElement('div');
-    imagecont2.className = 'project-image';
-    
-	const image2 = document.createElement("img");
-	image2.src = '../content/project/' + projectName + 'preview2.jpg';
-	image2.alt = "Project Image 2";
-	imagecont2.appendChild(image2);
+		const imageContainer = document.createElement('div');
+		imageContainer.className = 'project-images';
 
-    const projectNameElement = document.createElement('div');
-    projectNameElement.className = 'project-name';
-    projectNameElement.textContent = projectName;
+		const imagecont1 = document.createElement('div');
+		imagecont1.className = 'project-image';
+		const image1 = document.createElement("img");
+		image1.src = '../content/project/' + projectName + 'preview1.jpg';
+		image1.alt = "Project Image 1";
+		imagecont1.appendChild(image1);
 
-    imageContainer.appendChild(imagecont1);
-    imageContainer.appendChild(imagecont2);
+		const imagecont2 = document.createElement('div');
+		imagecont2.className = 'project-image';
+		
+		const image2 = document.createElement("img");
+		image2.src = '../content/project/' + projectName + 'preview2.jpg';
+		image2.alt = "Project Image 2";
+		imagecont2.appendChild(image2);
 
-    projectBox.appendChild(imageContainer);
-    projectBox.appendChild(projectNameElement);
+		const projectNameElement = document.createElement('div');
+		projectNameElement.className = 'project-name';
+		//projectNameElement.textContent = projectName.replace(/\/$/, '');
 
-    return projectBox;
+		fetch('../content/project/' + projectName + '/title.txt')
+        .then(response => response.text())
+        .then(title => {
+            projectNameElement.textContent = title;
+        });
+
+		imageContainer.appendChild(imagecont1);
+		imageContainer.appendChild(imagecont2);
+
+		projectBox.appendChild(imageContainer);
+		projectBox.appendChild(projectNameElement);
+
+		main.appendChild(projectBox);
+		return main;
 }
