@@ -10,7 +10,9 @@
 
 .main-content {
     padding: 20px;
-    max-width: 800px;
+    max-width: 100%;
     text-align: center;
     color: var(--text);
+
+	min-height: calc(100vh - 160px);
 }

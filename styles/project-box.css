@@ -1,11 +1,12 @@
 .project-box {
 	text-decoration: none;
-    width: 95%;
     background-color: var(--surface1);
     padding: 10px;
     border: 1px solid var(--yellow);
     border-radius: 2px;
     overflow: hidden;
+	margin-left: 3px;
+	margin-right: 3px;
 }
 
 .project-images {
@@ -39,4 +40,15 @@
 
 .project-redirect {
 	text-decoration: none;
+	padding: 0px;
+	max-width: 800px;
+	display: contents;
+}
+
+.project-list {
+    display: flex;
+    flex-wrap: wrap;
+	justify-content: center;
+    gap: 10px;
+	max-width: 100%;
 }

@@ -6,16 +6,22 @@ fetch('/content/project/project-index.txt')
 
         const mainContent = document.querySelector('.main-content');
 
+		const projectListContainer = document.createElement('div');
+		projectListContainer.className = 'project-list';
+
         projects.forEach(projectName => {
             const projectBox = createProjectBox(projectName);
-            mainContent.appendChild(projectBox);
+			projectListContainer.appendChild(projectBox);
         });
+		mainContent.appendChild(projectListContainer);
     })
     .catch(error => {
         console.error('Error fetching project list:', error);
     });
 	
 	
+	
+
 
 
 	function createProjectBox(projectName) {
