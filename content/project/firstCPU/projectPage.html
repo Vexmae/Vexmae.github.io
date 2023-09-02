@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="/styles/color-palette.css">
+	<link rel="stylesheet" href="/styles/navbar.css">
+	<link rel="stylesheet" href="/styles/body.css">
+	<link rel="stylesheet" href="/styles/content.css">
+	<link rel="stylesheet" href="/styles/footer-box.css">
+	<link rel="stylesheet" href="/styles/markdown.css">
+	<link rel="stylesheet" href="/styles/file-button.css">
+
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>The Vex8 Processor</title>
+</head>
+<body>
+    <div class="navbar">
+		<a href="/index.html">Home</a>
+		<a href="/about.html">About</a>
+		<a href="/projects.html">Projects</a>
+		<a href="/contact.html">Contact</a>
+		<div class="discord-icon-placeholder"></div>
+		<script src="/script/discordButton.js"></script>
+		<a class="github-icon" href="https://github.com/Vexmae" target="_blank" rel="noopener noreferrer">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+				<path d="M12 0a12 12 0 0 0-3.794 23.383c.6.112.821-.261.821-.577v-2.308c-3.338.728-4.042-1.607-4.042-1.607a3.162 3.162 0 0 0-1.318-1.742c-1.078-.738.081-.723.081-.723a2.52 2.52 0 0 1 1.83 1.231a2.544 2.544 0 0 0 3.478.99a2.544 2.544 0 0 1 .754-1.596c-2.643-.299-5.417-1.32-5.417-5.875a4.6 4.6 0 0 1 1.225-3.185a4.267 4.267 0 0 1 .116-3.14s1.007-.318 3.3 1.219a11.265 11.265 0 0 1 6 0c2.292-1.537 3.298-1.219 3.298-1.219a4.267 4.267 0 0 1 .116 3.14a4.6 4.6 0 0 1 1.225 3.185c0 4.567-2.775 5.576-5.424 5.867a2.848 2.848 0 0 1 .812 2.211v3.273c0 .32.218.694.831.577A12 12 0 0 0 12 0z" fill="#FFFFFF"/>
+			</svg>
+		</a>
+	</div>
+
+    <div class="background"></div>
+
+    <div class="content">
+        <div class="main-content">
+            <h1 id="the-really-shitty-vex8-processor">The really shitty vex8 processor</h1>
+			<blockquote>
+			<p>This is actually my very first processor, i blame Ben Eater, JDH and pretty much everyone who made a processor on Youtube for sending me down this rabbit hole.</p>
+			</blockquote>
+
+			<table>
+				<thead>
+					<tr>
+						<th>Table of content</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1. <a href="#how-it-started">How it started</a></td>
+					</tr>
+					<tr>
+						<td>2. <a href="#overview">Overview of the processor</a></td>
+					</tr>
+					<tr>
+						<td>3. <a href="#instruction-set">The instruction set</a></td>
+					</tr>
+					<tr>
+						<td>4. <a href="#thoughts">Thoughts and downloads</a></td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<h2 id="how-it-started">How it started</h2>
+			<p>The very thing that made me do this CPU was the Sebastian Lague’s <em>Digital Logic Sim</em> where he explained how simple logic worked, one thing led to another and i was downloading Logisim to try to do something myself. I first made a simple ALU, then some registers and started to have something that looked more and more like a processor.</p>
+			<p>The problem with this is that the bloody thing is barely holding itself together, fixing bugs took probably longer than making the thing itself. </p>
+			<h2 id="overview">Overview</h2>
+			<img src="diagram.png">
+			<p>
+			Here’s a Diagram of the processors’s architecture. It is a 8bit processor with a 16bit address bus to achieve a whopping 65 kilobytes of memory ( or 2<sup>16</sup> bytes of memory ), as we’ll see later the way control signals are transmited across the CPU is kind of ugly, it’s probably one of the worst part of this processor.</p>
+			<p>So, there are some quirks with this processor, the two main are:</p>
+			<ul>
+			<li>There is no way to do an operation with an immediate operand like you would do with an x86 based processor for exemple <code>add eax, 32</code>, instead the CPU loads the byte of data into the <strong>CU</strong> register and then it needs to be moved to another register to do anything useful with the data. The way it’s done is kind of ugly and use a lot of storage space on the rom chip (we need at least 2 extra bytes to load a single piece of data from the rom) but it’s the easiest way i could integrate it in the design.</li>
+			<li>Modifying or reading the program counter <strong>PC</strong> can only be done via the RAM Address register <strong>AD</strong>, i probably could have implemented reading from the program counter directly but at the time i just wanted to finish the damn processor. I had grown really tired of fixing bugs and seeing how the thing barely worked i didn’t want to touch it more.</li>
+			</ul>
+			<p>Inputs and outputs are also done through the <strong>C</strong> register, the clock signal and output signal are also provided with the I/O so it’s actually a 8 data bits + 2 control bits I/O</p>
+			<h2 id="instruction-set">Instruction set</h2>
+			<p>The instruction set is divided into 4 categories:</p>
+			<h3 id="the-0-instructions">The <em>0</em> instructions</h3>
+			<p>They allow the programmer to make the data of a register available on the bus, it is “sticky” so for exemple, when doing operations like <em><strong>put A register on bus</strong></em> the data of A will be on the bus until a new data is selected to put on the bus</p>
+			<p>Here are the instructions, note that when i’m saying “high” or “low” i am referring to the bits 15 to 8 and 7 to 0 of a 16 bit data:</p>
+
+			<table>
+				<thead>
+					<tr>
+						<th>Hex Code</th>
+						<th>Instruction</th>
+						<th>Hex Code</th>
+						<th>Instruction</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>0x00</td>
+						<td>A-&gt;BUS</td>
+						<td>0x07</td>
+						<td>AD HIGH-&gt;BUS</td>
+					</tr>
+					<tr>
+						<td>0x02</td>
+						<td>B-&gt;BUS</td>
+						<td>0x0A</td>
+						<td>RAM-&gt;BUS</td>
+					</tr>
+					<tr>
+						<td>0x04</td>
+						<td>C-&gt;BUS</td>
+						<td>0x0B</td>
+						<td>ALU-&gt;BUS</td>
+					</tr>
+					<tr>
+						<td>0x05</td>
+						<td>SP-&gt;BUS</td>
+						<td>0x0C</td>
+						<td>LEFT SHIFTER-&gt;BUS</td>
+					</tr>
+					<tr>
+						<td>0x06</td>
+						<td>AD LOW-&gt;BUS</td>
+						<td>0x0D</td>
+						<td>RIGHT SHIFTER-&gt;BUS</td>
+					</tr>
+					<tr>
+						<td>/</td>
+						<td>/</td>
+						<td>0x0E</td>
+						<td>CU-&gt;BUS</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<p>As you can see the instructions covers everything that can store data on the CPU. We’ll get into how the ALU works later on but the result of the wanted operation between A and B is always available and ready to go on the bus at all time</p>
+			<h3 id="the-2-instructions">The <em>2</em> instructions</h3>
+			<p>Those instructions are responsible for controlling the ALU and everything around it they’re also sticky so that so selected operation stays selected until another one is, it helps improving performance of certain type of repetitive operations.</p>
+
+			<table>
+				<thead>
+					<tr>
+						<th>Hex Code</th>
+						<th>Instruction</th>
+						<th>Hex Code</th>
+						<th>Instruction</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>0x20</td>
+						<td>ADD</td>
+						<td>0x28</td>
+						<td>LEFT BIT ROTATION</td>
+					</tr>
+					<tr>
+						<td>0x21</td>
+						<td>NOT</td>
+						<td>0x2A</td>
+						<td>RIGHT BIT ROTATTION</td>
+					</tr>
+					<tr>
+						<td>0x22</td>
+						<td>AND</td>
+						<td>0x2F</td>
+						<td>SUB WITH CARRY</td>
+					</tr>
+					<tr>
+						<td>0x23</td>
+						<td>OR</td>
+						<td>/</td>
+						<td>/</td>
+					</tr>
+					<tr>
+						<td>0x24</td>
+						<td>ADD CARRY</td>
+						<td>/</td>
+						<td>/</td>
+					</tr>
+					<tr>
+						<td>0x25</td>
+						<td>SUB</td>
+						<td>/</td>
+						<td>/</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<p>Almost all of those operations will be able to output from the ALU except for the rotation and shift operations which output from <strong>LR</strong> or <strong>RR</strong> (Instructions 0x0C or 0x0D). To output a rotation result to the bus you would select bit rotation with <strong>0x28</strong> or <strong>0x2A</strong> then output to the bus from a bit shifter by using <strong>0x0C</strong> or <strong>0x0D</strong></p>
+			<h3 id="the-1-instructions">The <em>1</em> Instructions</h3>
+			<p>We’re now looking at single use instructions that don’t stick like the two categories above, those are used to move data from the bus to registers and move data around registers.</p>
+
+			<table>
+				<thead>
+					<tr>
+						<th>Hex Code</th>
+						<th>Instruction</th>
+						<th>Hex Code</th>
+						<th>Instruction</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>0x10</td>
+						<td>A&lt;-BUS</td>
+						<td>0x18</td>
+						<td>/</td>
+					</tr>
+					<tr>
+						<td>0x11</td>
+						<td>B&lt;-BUS</td>
+						<td>0x19</td>
+						<td>RAM&lt;-BUS</td>
+					</tr>
+					<tr>
+						<td>0x12</td>
+						<td>C&lt;-BUS</td>
+						<td>0x1A</td>
+						<td>PC-&gt;AD</td>
+					</tr>
+					<tr>
+						<td>0x13</td>
+						<td>SP&lt;-BUS</td>
+						<td>0x1B</td>
+						<td>IO PORT-&gt;C</td>
+					</tr>
+					<tr>
+						<td>0x14</td>
+						<td>AD LOW&lt;-BUS</td>
+						<td>0x1C</td>
+						<td>C-&gt;IO PORT</td>
+					</tr>
+					<tr>
+						<td>0x15</td>
+						<td>AD HIGH&lt;-BUS</td>
+						<td>0x1F</td>
+						<td>JUMP</td>
+					</tr>
+				</tbody>
+			</table>
+			<p>The <strong>JUMP</strong> Instruction does the <em>AD-&gt;PC</em> operation, it copies the 16bit address of the <strong>AD</strong> register to <strong>PC</strong>.  There’s not much to say as the instructions here are pretty self explanatory</p>
+			<h3 id="the-f-instructions">The <em>F</em> instructions</h3>
+			<p>Those ones are very important, they allow conditional jumps with other various things like loading data from the ROM to the <strong>CU</strong> register.</p>
+			<table>
+				<thead>
+					<tr>
+						<th>Hex Code</th>
+						<th>Instruction</th>
+						<th>Hex Code</th>
+						<th>Instruction</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>0xF1</td>
+						<td>JUMPZ</td>
+						<td>0xF8</td>
+						<td>RSTSP</td>
+					</tr>
+					<tr>
+						<td>0xF2</td>
+						<td>JUMPN</td>
+						<td>0xF9</td>
+						<td>RSTAD</td>
+					</tr>
+					<tr>
+						<td>0xF3</td>
+						<td>JUMPC</td>
+						<td>0xFA</td>
+						<td>RSTPC</td>
+					</tr>
+					<tr>
+						<td>0xF5</td>
+						<td>RSTA</td>
+						<td>0xFB</td>
+						<td>ROM-&gt;CU</td>
+					</tr>
+					<tr>
+						<td>0xF6</td>
+						<td>RSTB</td>
+						<td>0xFC</td>
+						<td>HALT</td>
+					</tr>
+					<tr>
+						<td>0xF7</td>
+						<td>RSTC</td>
+						<td>0xFD</td>
+						<td>NOOP</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<p>The <strong>JUMPZ, JUMPN, JUMPC</strong> will perform the <em>AD-&gt;PC</em> operation if the result from the selected ALU operation (see 2 instructions) is, strictly zero for <strong>JUMPZ</strong>, if the MSB is equal to 1 for <strong>JUMPN</strong>, if the carry bit is true for <strong>JUMPC</strong>. Those instructions do not need the <strong>ALU-&gt;BUS</strong> instruction to work.</p>
+			<p>Instructions <strong>RST</strong>- are used to reset the register to their original value of 0. Using <strong>RSTPC</strong> will return the program counter to 0 and effectively restarts the program.</p>
+			<p>The next instruction <strong>ROM-&gt;CU</strong> loads the byte immediately after the instruction, for example, to load the byte <em>0xAA</em>, the binary value needs to be <code>0xFB 0xAA</code>. After that the data can be accessed from the <strong>CU</strong> register like any other one.</p>
+			<hr>
+			<p>All those instructions take exactly one clock cycle except the <strong>ROM-&gt;CU</strong> instruction which takes one clock cycle to fetch the instruction and another one to fetch the data to load and storing it in CU.</p>
+			<p>This instruction set was kind of bad to be honest, it wasn’t really planned and is just the result of whatever bad decision i made during the designing process.</p>
+			<h2 id="thoughts">Thoughts</h2>
+			<p>Even is this processor is, in retrospective, really bad, it allowed me to learn the basics of CPU architecture and grant me the ability to learn more complex concepts for my future designs. I also wrote a very basic assembler to go with the cpu, it’s kind of bad but to be honest it doesn’t need a complex assembler or anything like that.</p>
+			<h2 id="files">Files</h2>
+			<p>Archive file with the Logisim file, a full diagram of the cpu, an assembler, exemple helloworld bin file and uncompiled branching test. Please follow microcode.txt to use the correct assembler instructions. READ THE README</p>
+			<a id="downloadLink" href="/content/project/firstCPU/vex8.zip" download class="fileDownload">
+				<img src="/content/ressources/file-icon-white.png" alt="File Icon" class="download-icon"> Download project files
+			</a>
+		</div>
+    </div>
+
+	<div class="footer-box">
+		Placeholder.
+	</div>
+
+</body>
+</html>

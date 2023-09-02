@@ -1,18 +1,44 @@
+
+
 .content {
     padding-top: 80px;
     display: flex;
     justify-content: center;
     background-color: var(--base);
-    margin: 0 15%; /* 15% margin on the left and right */
+    
     border-left: 2.5px solid var(--yellow); /* Left border */
     border-right: 2.5px solid var(--yellow); /* Right border */
 }
 
+
+
+@media (max-width: 300px) {
+	.content{
+		margin: 0 calc((100vw - 255px));
+		
+	}
+}
+
+@media (max-width: 260px) {
+	.content{
+		margin: 0 5px;
+		
+	}
+}
+
+@media (min-width: 300px) {
+	.content{
+		margin: 0 15%; /* 15% margin on the left and right */
+	}
+}
+
+
 .main-content {
     padding: 20px;
-    max-width: 100%;
+    max-width: 98%;
     text-align: center;
     color: var(--text);
-
+	margin-left: 5px;
+	margin-right: 5px;
 	min-height: calc(100vh - 160px);
 }
