@@ -9,6 +9,9 @@
 	<link rel="stylesheet" href="/styles/body.css">
 	<link rel="stylesheet" href="/styles/content.css">
 	<link rel="stylesheet" href="/styles/footer-box.css">
+	<link rel="stylesheet" href="/styles/markdown.css">
+	<link rel="stylesheet" href="/styles/file-button.css">
+	<link rel="stylesheet" href="/styles/carousel.css">
 
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -35,15 +38,91 @@
     <div class="content">
         <div class="main-content">
             <!-- Your text content and presentation goes here -->
-            <h1>CPU Architecture Hobby Website</h1>
-            <p>Placeholder. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			<p>Placeholder. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			<p>Placeholder. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			<p>Placeholder. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			<p>Placeholder. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			<p>Placeholder. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			<p>Placeholder. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			<p>Placeholder. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h1>Vexmae's CPU Architecture Hobby Website</h1>
+            <h3>Displayed Articles:</h3>
+			<script src="/script/carousel.js"></script>
+
+			<div class="carousel-container">
+				<div class="carousel-button carousel-button-left" onclick="moveCarousel(-1)">←</div>
+				<div class="carousel-button carousel-button-right" onclick="moveCarousel(1)">→</div>
+				<div class="carousel-slide">
+
+					<div class="carousel-item">
+						<a href="/content/project/firstCPU/projectPage.html">
+							<img src="/content/project/firstCPU/diagram.png" width="90%" height="90%" class="carousel-image">
+							<div class="carousel-title">Vex8 Processor</div>
+						</a>
+					</div>
+					<div class="carousel-item">
+						<a href="/projects.html">
+							<img src="/content/project/second4bit/preview1.jpg" width="90%" height="90%" class="carousel-image">
+							<div class="carousel-title">Placeholder lmao</div>
+						</a>
+					</div>
+					<div class="carousel-item">
+						<a href="/projects.html">
+							<img src="/content/project/second4bit/preview1.jpg" width="90%" height="90%" class="carousel-image">
+							<div class="carousel-title">Placeholder2 lmao</div>
+						</a>
+					</div>
+
+					<!-- Add more carousel items as needed and update carousel.js-->
+
+				</div>
+			</div>
+
+			<hr>
+			<h2 id="current-project-status">Current project status:</h2>
+			<p>I’m currently working on my third processor. Here is the to-do list:</p>
+
+			<table>
+				<thead>
+					<tr>
+						<th>Action</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Primary Architecture</td>
+						<td>In progress</td>
+					</tr>
+					<tr>
+						<td>Instruction Set</td>
+						<td>In progress</td>
+					</tr>
+					<tr>
+						<td>Circuit Design</td>
+						<td>Planned</td>
+					</tr>
+					<tr>
+						<td>Verilog representation</td>
+						<td>Planned</td>
+					</tr>
+					<tr>
+						<td>Emulator</td>
+						<td>Planned</td>
+					</tr>
+					<tr>
+						<td>Assembler</td>
+						<td>Planned</td>
+					</tr>
+					<tr>
+						<td>C compiler</td>
+						<td>Considered</td>
+					</tr>
+					<tr>
+						<td>Custom programming language</td>
+						<td>Considered</td>
+					</tr>
+					<tr>
+						<td>BIOS + USB Support</td>
+						<td>Considered</td>
+					</tr>
+				</tbody>
+			</table>
+
+
 		</div>
     </div>
 

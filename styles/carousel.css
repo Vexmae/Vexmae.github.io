@@ -1,0 +1,50 @@
+.carousel-container {
+	overflow: hidden;
+	position: relative;
+	height: 50vh;
+	width: 100%;
+	border: 2px solid var(--yellow);
+}
+
+.carousel-slide {
+	display: flex;
+	transition: transform 0.3s ease-in-out;
+	height: 100%;
+}
+
+.carousel-item {
+	flex: 0 0 100%;
+	text-align: center;
+	height: 100%;
+}
+
+.carousel-image {
+	padding: 10px;
+	padding-bottom: 5px;
+	height: 85%;
+	overflow: hidden;
+	object-fit: cover;
+}
+
+.carousel-title {
+	font-weight: bold;
+}
+
+.carousel-button {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background-color: rgba(0, 0, 0, 0.5);
+	color: white;
+	padding: 5px 10px;
+	cursor: pointer;
+	z-index: 1;
+}
+
+.carousel-button-left {
+	left: 0;
+}
+
+.carousel-button-right {
+	right: 0;
+}
