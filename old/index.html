@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="/styles/color-palette.css">
+	<link rel="stylesheet" href="/styles/navbar.css">
+	<link rel="stylesheet" href="/styles/body.css">
+	<link rel="stylesheet" href="/styles/content.css">
+	<link rel="stylesheet" href="/styles/footer-box.css">
+	<link rel="stylesheet" href="/styles/markdown.css">
+	<link rel="stylesheet" href="/styles/file-button.css">
+	<link rel="stylesheet" href="/styles/carousel.css">
+
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Vexmae's CPU website: Home</title>
+</head>
+<body>
+    <div class="navbar">
+		<a href="/index.html">Home</a>
+		<a href="/about.html">About</a>
+		<a href="/projects.html">Projects</a>
+		<a href="/contact.html">Contact</a>
+		<div class="discord-icon-placeholder"></div>
+		<script src="/script/discordButton.js"></script>
+		<a class="github-icon" href="https://github.com/Vexmae" target="_blank" rel="noopener noreferrer">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+				<path d="M12 0a12 12 0 0 0-3.794 23.383c.6.112.821-.261.821-.577v-2.308c-3.338.728-4.042-1.607-4.042-1.607a3.162 3.162 0 0 0-1.318-1.742c-1.078-.738.081-.723.081-.723a2.52 2.52 0 0 1 1.83 1.231a2.544 2.544 0 0 0 3.478.99a2.544 2.544 0 0 1 .754-1.596c-2.643-.299-5.417-1.32-5.417-5.875a4.6 4.6 0 0 1 1.225-3.185a4.267 4.267 0 0 1 .116-3.14s1.007-.318 3.3 1.219a11.265 11.265 0 0 1 6 0c2.292-1.537 3.298-1.219 3.298-1.219a4.267 4.267 0 0 1 .116 3.14a4.6 4.6 0 0 1 1.225 3.185c0 4.567-2.775 5.576-5.424 5.867a2.848 2.848 0 0 1 .812 2.211v3.273c0 .32.218.694.831.577A12 12 0 0 0 12 0z" fill="#FFFFFF"/>
+			</svg>
+		</a>
+	</div>
+
+    <div class="background"></div>
+
+    <div class="content">
+        <div class="main-content">
+            <!-- Your text content and presentation goes here -->
+            <h1>Vexmae's CPU Architecture Hobby Website</h1>
+            <h3>Displayed Articles:</h3>
+			<script src="/script/carousel.js"></script>
+
+			<div class="carousel-container">
+				<div class="carousel-button carousel-button-left" onclick="moveCarousel(-1)">←</div>
+				<div class="carousel-button carousel-button-right" onclick="moveCarousel(1)">→</div>
+				<div class="carousel-slide">
+
+					<div class="carousel-item">
+						<a href="/content/project/firstCPU/projectPage.html">
+							<img src="/content/project/firstCPU/diagram.png" width="90%" height="90%" class="carousel-image">
+							<div class="carousel-title">Vex8 Processor</div>
+						</a>
+					</div>
+					<div class="carousel-item">
+						<a href="/projects.html">
+							<img src="/content/project/second4bit/preview1.jpg" width="90%" height="90%" class="carousel-image">
+							<div class="carousel-title">Placeholder lmao</div>
+						</a>
+					</div>
+					<div class="carousel-item">
+						<a href="/projects.html">
+							<img src="/content/project/second4bit/preview1.jpg" width="90%" height="90%" class="carousel-image">
+							<div class="carousel-title">Placeholder2 lmao</div>
+						</a>
+					</div>
+
+					<!-- Add more carousel items as needed and update carousel.js-->
+
+				</div>
+			</div>
+
+			<hr>
+			<h2 id="current-project-status">Current project status:</h2>
+			<p>I’m currently working on my third processor. Here is the to-do list:</p>
+
+			<table>
+				<thead>
+					<tr>
+						<th>Action</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Primary Architecture</td>
+						<td>In progress</td>
+					</tr>
+					<tr>
+						<td>Instruction Set</td>
+						<td>In progress</td>
+					</tr>
+					<tr>
+						<td>Circuit Design</td>
+						<td>Planned</td>
+					</tr>
+					<tr>
+						<td>Verilog representation</td>
+						<td>Planned</td>
+					</tr>
+					<tr>
+						<td>Emulator</td>
+						<td>Planned</td>
+					</tr>
+					<tr>
+						<td>Assembler</td>
+						<td>Planned</td>
+					</tr>
+					<tr>
+						<td>C compiler</td>
+						<td>Considered</td>
+					</tr>
+					<tr>
+						<td>Custom programming language</td>
+						<td>Considered</td>
+					</tr>
+					<tr>
+						<td>BIOS + USB Support</td>
+						<td>Considered</td>
+					</tr>
+				</tbody>
+			</table>
+
+
+		</div>
+    </div>
+
+	<div class="footer-box">
+		Placeholder.
+	</div>
+
+</body>
+</html>
