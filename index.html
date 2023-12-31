@@ -9,12 +9,63 @@
 	<script src="tuicss/tuicss.min.js"></script>
     <link rel="stylesheet" href="tuicss/tuicss.min.css">
 </head>
-<body class="tui-bg-blue-black">
 
-	<div style="position: absolute; width: 75%; height: 60px; top: 50%; left: 50%; transform: translate(-50%, -100%)">
-		<p class="secondary-text"; style="font-size: 25px; text-align: center; ">
-			Website under construction !  
-	   </p>
+
+<body class="tui-bg-blue-black center-align" style="min-width: 440px;">
+	
+	<!-- This is the main title bar, we need to keep it at the top of all pages, we will simply copy-paste it on each manually made pages and voilà ! -->
+	<style>
+		.hide-when-small{ visibility: visible; }
+		.show-when-small{ visibility: hidden; }
+		@media (max-width: 999px) {
+			.show-when-small{ visibility: visible; }
+			.hide-when-small{ visibility: hidden; display: none; }
+		}
+		@media (min-width: 1000px) {
+			.show-when-small{ visibility: hidden; display: none; }
+			.hide-when-small{ visibility: visible; }
+		}
+	</style>
+	<div class="tui-statusbar black-168 white-text center-align">Footer Placeholder</div>
+	<div class="tui-window fixed" style="left: 0px; top: 0px; width: calc(100% - 10px); margin: 5px; z-index: 1000;">
+		<fieldset class="tui-fieldset center-align hide-when-small">
+			<legend class="center">VEXMAE'S COMPUTER SCIENCE ADVENTURES</legend>
+			<a class="tui-button orange-168 left hide-when-small" style="margin-right: 15px;" href="/index.html">HOME 󰋜</a>
+			<a class="tui-button orange-168 left hide-when-small" style="margin-right: 15px;">PROJECTS </a>
+			<a class="tui-button orange-168 left hide-when-small" style="margin-right: 15px;">POSTS 󰈙</a>
+
+			HOME
+
+			<a class="tui-button orange-168 right center-align hide-when-small" style="margin-left: 15px;">ABOUT </a>
+			<a class="tui-button orange-168 right center-align hide-when-small" style="margin-left: 15px;" href="https://github.com/Vexmae" target="_blank">Vexmae </a>
+			<a class="tui-button orange-168 right center-align hide-when-small" style="margin-left: 15px;" href="https://discord.com/users/475239330584199169" target="_blank">@vexmae 󰙯</a>
+		</fieldset>
+
+		<fieldset class="tui-fieldset center-align show-when-small">
+			<legend class="center">VEXMAE'S COMPUTER SCIENCE ADVENTURES</legend>
+				<a class="tui-button orange-168 left show-when-small" style="margin-right: 15px;" href="/index.html">󰋜</a>
+				<a class="tui-button orange-168 left show-when-small" style="margin-right: 15px;"></a>
+				<a class="tui-button orange-168 left show-when-small" style="margin-right: 15px;">󰈙</a>
+
+				HOME
+
+				<a class="tui-button orange-168 right center-align show-when-small" style="margin-left: 15px;"></a>
+				<a class="tui-button orange-168 right center-align show-when-small" style="margin-left: 15px;" href="https://github.com/Vexmae" target="_blank"></a>
+				<a class="tui-button orange-168 right center-align show-when-small" style="margin-left: 15px;" href="https://discord.com/users/475239330584199169" target="_blank">󰙯</a>
+		</fieldset>
+
 	</div>
+	<div class="tui-bg-blue-black fixed" style="top: 0; height: 5px; width: 100%; z-index: 999;"></div>
+	<div style="padding-bottom: 100px;"></div>
+	<!--End of copy pasted section-->
+	
+
+	<div class="tui-window relative full-height" style="width: 75%; margin-bottom: 15px;">
+		<fieldset class="tui-fieldset" style="height: 100%; min-height: calc(100vh - 130px);">
+			WEBSITE IN CONSTRUCTION !
+		</fieldset>
+	</div>
+	
+
 </body>
 </html>
