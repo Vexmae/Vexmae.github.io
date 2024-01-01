@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Vexmae's CPUs</title>
+	<title>Vexmae's CS Adventures</title>
 
 	<script src="tuicss/tuicss.min.js"></script>
     <link rel="stylesheet" href="tuicss/tuicss.min.css">
@@ -34,7 +34,7 @@
 			.content{min-height: calc(100vh - 130px);}
 		}
 	</style>
-	<div class="tui-statusbar black-168 white-text center-align">Footer Placeholder</div>
+	<div class="tui-statusbar black-168 white-text center-align content-text">WEBSITE STILL UNDER CONSTRUCTION</div>
 	<div class="tui-window fixed" style="left: 0px; top: 0px; width: calc(100% - 10px); margin: 5px; z-index: 1000;">
 		<fieldset class="tui-fieldset center-align show-when-big">
 			<legend class="center">VEXMAE'S COMPUTER SCIENCE ADVENTURES</legend>
@@ -82,10 +82,46 @@
 	<div class="show-when-small" style="padding-bottom: 125px;"></div>
 	<!--End of copy pasted section-->
 	
+	<style>
+		.content-text{
+			visibility: visible;
+		}
+		@media (max-width: 799px) {
+			.content-text{font-size: small;}
+			
+		}
+		@media (max-width: 999px) and (min-width: 800px) {
+			.content-text{font-size: smaller;}
+		}
+		@media (min-width: 1000px) {
+			.content-text{font-size: medium;}
+		}
+	</style>
 
-	<div class="tui-window relative full-height" style="width: 75%; margin-bottom: 15px;">
-		<fieldset class="content tui-fieldset" style="height: 100%;">
-			WEBSITE IN CONSTRUCTION !
+	<div class="tui-window relative full-height" style=" margin-bottom: 15px; width: 90%; max-width: 100vh;">
+		<fieldset class="content tui-fieldset" style="height: 100%; padding: 20px;">
+			<div class="tui-panel full-width black-168">
+				<div class="tui-panel-header white-168 left-align">
+					WELCOME :D
+				</div>
+				<div class="tui-panel-content left-align" style="padding-left: 25px;">
+					<p class="content-text" style="padding: 0; margin: 10px;">
+						Welcome to this website ! In it  i'll mainly talk about programming and cpu architecture.
+						You can use the naviguation bar to access the PROJECTS &nbsp; pages and learn about what i'm up to. You can use the POSTS 󰈙&nbsp;
+						to access a list of all posts in chronological order.
+					</p>
+					<p class="content-text" style="padding: 0; margin: 10px; margin-bottom: 20px;">
+						Here's what i'm currently doing: 
+					</p>
+					
+					<div class="tui-border-solid center-align" style="padding: 10px;">
+						<p class="content-text">Taking a look into how CPUs work by making a simple 8 bit CPU ! :D</p>
+						<a class="full-height full-width" href="/index.html">
+							<img src="/content/media/homepage.png" class="tui-border-dotted" width="100%"/>
+						</a>
+					</div>
+				</div>
+			</div>
 		</fieldset>
 	</div>
 	
