@@ -1,0 +1,70 @@
+<!-- This is the main title bar, we need to keep it at the top of all pages, we will simply copy-paste it on each manually made pages and voilà ! -->
+<style>
+	.show-when-big{ visibility: visible; }
+	.show-when-medium{ visibility: visible; }
+	.show-when-small{ visibility: visible; }
+	.content{ visibility: visible; }
+
+	@media (max-width: 799px) {
+		.show-when-big{visibility: hidden; display: none;}
+		.show-when-medium{visibility: hidden; display: none;}
+		.content{min-height: calc(100vh - 155px);}
+	}
+	@media (max-width: 999px) and (min-width: 800px) {
+		.show-when-big{visibility: hidden; display: none;}
+		.show-when-small{visibility: hidden; display: none;}
+		.content{min-height: calc(100vh - 155px);}
+	}
+	@media (min-width: 1000px) {
+		.show-when-medium{visibility: hidden; display: none;}
+		.show-when-small{visibility: hidden; display: none;}
+		.content{min-height: calc(100vh - 130px);}
+	}
+</style>
+<div class="tui-statusbar black-168 white-text center-align content-text">WEBSITE STILL UNDER CONSTRUCTION</div>
+<div class="tui-window fixed" style="left: 0px; top: 0px; width: calc(100% - 10px); margin: 5px; z-index: 1000;">
+	<fieldset class="tui-fieldset center-align show-when-big">
+		<legend class="center">VEXMAE'S COMPUTER SCIENCE ADVENTURES</legend>
+		<a class="tui-button orange-168 left show-when-big" style="margin-right: 15px;" href="/index.html">HOME 󰋜</a>
+		<a class="tui-button orange-168 left show-when-big" style="margin-right: 15px;">PROJECTS </a>
+		<a class="tui-button orange-168 left show-when-big" style="margin-right: 15px;">POSTS 󰈙</a>
+
+		<a id="page-title" class="center-align">HOME</a>
+
+		<a class="tui-button orange-168 right center-align show-when-big" style="margin-left: 15px;">ABOUT </a>
+		<a class="tui-button orange-168 right center-align show-when-big" style="margin-left: 15px;" href="https://github.com/Vexmae" target="_blank">Vexmae </a>
+		<a class="tui-button orange-168 right center-align show-when-big" style="margin-left: 15px;" href="https://discord.com/users/475239330584199169" target="_blank">@vexmae 󰙯</a>
+	</fieldset>
+
+	<fieldset class="tui-fieldset center-align show-when-medium">
+		<legend class="center">VEXMAE'S CS ADVENTURES</legend>
+			<p id="page-title" style="margin: 0%; margin-bottom: 5px;">HOME</p>
+
+			<a class="tui-button orange-168 left show-when-medium" style="margin-right: 15px;" href="/index.html">HOME 󰋜</a>
+			<a class="tui-button orange-168 left show-when-medium" style="margin-right: 15px;">PROJECTS </a>
+			<a class="tui-button orange-168 left show-when-medium" style="margin-right: 15px;">POSTS 󰈙</a>
+
+			<a class="tui-button orange-168 right center-align show-when-medium" style="margin-left: 15px;">ABOUT </a>
+			<a class="tui-button orange-168 right center-align show-when-medium" style="margin-left: 15px;" href="https://github.com/Vexmae" target="_blank">Vexmae </a>
+			<a class="tui-button orange-168 right center-align show-when-medium" style="margin-left: 15px;" href="https://discord.com/users/475239330584199169" target="_blank">@vexmae 󰙯</a>
+	</fieldset>
+
+	<fieldset class="tui-fieldset center-align show-when-small">
+		<legend class="center">VEXMAE'S CS ADVENTURES</legend>
+			<p id="page-title" style="margin: 0%; margin-bottom: 5px;">HOME</p>
+
+			<a class="tui-button orange-168 left show-when-small" style="margin-right: 15px;" href="/index.html">󰋜</a>
+			<a class="tui-button orange-168 left show-when-small" style="margin-right: 15px;"></a>
+			<a class="tui-button orange-168 left show-when-small" style="margin-right: 15px;">󰈙</a>
+
+			<a class="tui-button orange-168 right center-align show-when-small" style="margin-left: 15px;"></a>
+			<a class="tui-button orange-168 right center-align show-when-small" style="margin-left: 15px;" href="https://github.com/Vexmae" target="_blank"></a>
+			<a class="tui-button orange-168 right center-align show-when-small" style="margin-left: 15px;" href="https://discord.com/users/475239330584199169" target="_blank">󰙯</a>
+	</fieldset>
+
+</div>
+<div class="tui-bg-blue-black fixed" style="top: 0; height: 5px; width: 100%; z-index: 999;"></div>
+<div class="show-when-big" style="padding-bottom: 100px;"></div>
+<div class="show-when-medium" style="padding-bottom: 125px;"></div>
+<div class="show-when-small" style="padding-bottom: 125px;"></div>
+<!--End of copy pasted section-->
