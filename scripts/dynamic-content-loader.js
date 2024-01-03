@@ -12,7 +12,9 @@ function addContent(){
 			.then(data => {
 				document.getElementById('content-space').insertAdjacentHTML('afterbegin', data);
 				document.getElementById('tab-title').innerText = document.getElementById('loaded').getAttribute('page-title');
-				document.getElementById('page-title').innerText = document.getElementById('loaded').getAttribute('page-title');
+				document.getElementById('page-title-big').innerText = document.getElementById('loaded').getAttribute('page-title');
+				document.getElementById('page-title-medium').innerText = document.getElementById('loaded').getAttribute('page-title');
+				document.getElementById('page-title-small').innerText = document.getElementById('loaded').getAttribute('page-title');
 			});
 			
 	} else {
